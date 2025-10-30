@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Validated Form</title>
+  <style>
+    body { font-family: Arial; max-width:600px; margin:20px auto; padding:10px;}
+    label { display:block; margin-top:12px; }
+    input { width:100%; padding:8px; box-sizing:border-box; }
+    .error { color:#c00; font-size:0.9em; }
+  </style>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form id="signup">
+    <label>Full name
+      <input type="text" id="name" required>
+      <div id="nameErr" class="error"></div>
+    </label>
+
+    <label>Email
+      <input type="email" id="email" required>
+      <div id="emailErr" class="error"></div>
+    </label>
+
+    <label>Password
+      <input type="password" id="pwd" required minlength="6">
+      <div id="pwdErr" class="error"></div>
+    </label>
+
+    <label>Age
+      <input type="number" id="age" min="10" max="100">
+      <div id="ageErr" class="error"></div>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('signup').addEventListener('submit', function(e){
+      e.preventDefault();
+      // Clear previous errors
+      ['nameErr','emailErr','pwdErr','ageErr'].forEach(id=>document.getElementById(id).textContent='');
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pwd = document.getElementById('pwd').value;
+      const age = Number(document.getElementById('age').value);
+
+      let ok = true;
+
+      if (name.length < 3) {
+        document.getElementById('nameErr').textContent = 'Name must be at least 3 characters.';
+        ok = false;
+      }
+
+      // Simple email regex (not perfect, good for demos)
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        document.getElementById('emailErr').textContent = 'Enter a valid email.';
+        ok = false;
+      }
+
+      if (pwd.length < 6) {
+        document.getElementById('pwdErr').textContent = 'Password must be 6+ characters.';
+        ok = false;
+      }
+
+      if (!Number.isNaN(age) && (age < 10 || age > 100)) {
+        document.getElementById('ageErr').textContent = 'Age must be between 10 and 100.';
+        ok = false;
+      }
+
+      if (ok) {
+        alert('Form submitted successfully!');
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>

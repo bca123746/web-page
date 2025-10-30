@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Responsive Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; }
+    header { padding:20px; background:#0b79d0; color:white; }
+    .container { display:grid; grid-template-columns: 1fr 300px; gap:16px; padding:16px; }
+    article { background:#fff; padding:16px; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+    aside { background:#f7f7f7; padding:16px; }
+
+    /* Responsive: stack columns on small screens */
+    @media (max-width:700px) {
+      .container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Responsive Layout</h1></header>
+  <div class="container">
+    <article>
+      <h2>Article</h2>
+      <p>When the viewport is narrow, the aside will move below the article.</p>
+    </article>
+    <aside>
+      <h3>Sidebar</h3>
+      <p>Navigation / widgets</p>
+    </aside>
+  </div>
+</body>
+</html>

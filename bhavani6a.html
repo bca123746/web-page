@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Two Column - Float</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width:1000px; margin:20px auto; }
+    .sidebar { width:25%; float:left; padding:10px; box-sizing:border-box; background:#f3f3f3; }
+    .content { width:75%; float:left; padding:10px; box-sizing:border-box; }
+    .clearfix::after { content:""; display:block; clear:both; }
+  </style>
+</head>
+<body>
+  <div class="clearfix">
+    <aside class="sidebar">Sidebar / navigation</aside>
+    <section class="content">
+      <h2>Main content</h2>
+      <p>Float based two column layout.</p>
+    </section>
+  </div>
+</body>
+</html>

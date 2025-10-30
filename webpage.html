@@ -1,0 +1,140 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Webpage</title>
+
+  <!-- CSS Styling -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #4a47a3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #222;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #74ebd5;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+      text-align: center;
+    }
+
+    button {
+      background: #4a47a3;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #35328c;
+    }
+
+    .color-box {
+      width: 150px;
+      height: 150px;
+      background: #74ebd5;
+      margin: 30px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Interactive Webpage</h1>
+    <p>Built with HTML, CSS, and JavaScript</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Click the Button Below!</h2>
+    <div class="color-box" id="colorBox"></div>
+    <button onclick="changeColor()">Change Color</button>
+
+    <h3>Current Time:</h3>
+    <p id="time"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Interactive Webpage</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const box = document.getElementById('colorBox');
+    const timeDisplay = document.getElementById('time');
+
+    // Function to change box color randomly
+    function changeColor() {
+      const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+      box.style.background = randomColor;
+      box.style.transform = 'rotate(' + (Math.random() * 20 - 10) + 'deg)';
+    }
+
+    // Function to update time every second
+    function updateTime() {
+      const now = new Date();
+      timeDisplay.textContent = now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+
+</body>
+</html>   

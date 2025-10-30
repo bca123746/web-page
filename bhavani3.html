@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Form</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+    }
+
+    .rating {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      margin-top: 8px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      background: #2575fc;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Feedback Form</h2>
+    <form id="feedbackForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+      <label>How did you hear about us?</label>
+      <div class="radio-group">
+        <input type="radio" id="social" name="source" value="Social Media" required />
+        <label for="social">Social Media</label><br />
+        <input type="radio" id="friend" name="source" value="Friend" />
+        <label for="friend">Friend</label><br />
+        <input type="radio" id="search" name="source" value="Search Engine" />
+        <label for="search">Search Engine</label>
+      </div>
+
+      <label>Which features did you like? (Select all that apply)</label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="design" name="features" value="Design" />
+        <label for="design">Design</label><br />
+        <input type="checkbox" id="usability" name="features" value="Usability" />
+        <label for="usability">Usability</label><br />
+        <input type="checkbox" id="performance" name="features" value="Performance" />
+        <label for="performance">Performance</label>
+      </div>
+
+      <label for="rating">Rate your experience:</label>
+      <select id="rating" name="rating" required>
+        <option value="">Select a rating</option>
+        <option value="5">Excellent</option>
+        <option value="4">Very Good</option>
+        <option value="3">Good</option>
+        <option value="2">Fair</option>
+        <option value="1">Poor</option>
+      </select>
+
+      <label for="comments">Additional Comments:</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..."></textarea>
+
+      <button type="submit">Submit Feedback</button>
+      <p class="success-message" id="successMessage">✅ Thank you for your feedback!</p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const message = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      message.style.display = "block";
+      form.reset();
+      setTimeout(() => (message.style.display = "none"), 4000);
+    });
+  </script>
+</body>
+</html>
